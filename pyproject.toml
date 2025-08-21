@@ -9,5 +9,18 @@ dependencies = [
     "langchain-core>=0.3.74",
     "langchain-openai>=0.3.30",
     "langgraph>=0.6.6",
+    "pre-commit>=4.3.0",
     "python-dotenv>=1.1.1",
 ]
+
+[tool.black]
+line-length = 88
+target-version = ['py313']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203"]
