@@ -12,6 +12,7 @@ dependencies = [
     "pre-commit>=4.3.0",
     "pytest>=8.4.1",
     "python-dotenv>=1.1.1",
+    "typer-slim[standard]>=0.16.1",
 ]
 
 [tool.black]
