@@ -10,6 +10,7 @@ dependencies = [
     "langchain-openai>=0.3.30",
     "langgraph>=0.6.6",
     "pre-commit>=4.3.0",
+    "pytest>=8.4.1",
     "python-dotenv>=1.1.1",
 ]
 
@@ -24,3 +25,14 @@ line_length = 88
 [tool.flake8]
 max-line-length = 88
 extend-ignore = ["E203"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-v",
+    "--tb=short",
+    "--strict-markers",
+]
