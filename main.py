@@ -7,6 +7,7 @@ from langgraph.prebuilt import chat_agent_executor
 
 from prompts import SYSTEM_PROMPT, USER_PROMPT
 from tools import git_diff
+from utils.git import ensure_staged
 
 load_dotenv()
 
@@ -25,10 +26,12 @@ def main() -> None:
         temperature=0,
     )
 
+    staged = git_diff.func().strip()
+    staged = ensure_staged(staged)
+
     agent = chat_agent_executor.create_tool_calling_executor(
         model=model, tools=[git_diff]
     )
-
     result = agent.invoke(
         {"messages": [("system", SYSTEM_PROMPT), ("user", USER_PROMPT)]}
     )
